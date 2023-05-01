@@ -39,7 +39,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # SECRET_KEY = 'django-insecure-9z3xd7+m%9k9h_-jfw!gsrjq4l(28_9w2n8u8rjtqizi0^=y_q'
 SECRET_KEY = 'Xf4iteRQtD4XLvM1670XtXI78DS6jyjq9J15g8YY'
-AWS_ACCESS_KEY_ID = 'AKIAWJJQTMYNIQYCEOJT'
+# AWS_ACCESS_KEY_ID = 'AKIAWJJQTMYNIQYCEOJT'
 # AWS_STORAGE_BUCKET_NAME = 'my-ushop-s3bucket'
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -48,7 +48,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['django-ushop-env.eba-dm4m3ur5.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['django-ushop-env.eba-dm4m3ur5.us-west-2.elasticbeanstalk.com', '127.0.0.1']
 
 # Application definition
 
@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'store',
     'carts',
     'orders',
-    # 'admin_honeypot',
+    'admin_honeypot',
     'storages',
 ]
 
@@ -128,7 +128,7 @@ AUTH_USER_MODEL = 'accounts.Account'
 #     DATABASES = {
 #         'default': {
 #             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
+#             'NAME': BASE_DIR /'db.sqlite3',
 #         }
 #     }
 
@@ -188,22 +188,22 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+# #
+# STATIC_URL = 'static/'
+# STATIC_ROOT = 'os.path.join()', 'static'
+# STATICFILES_DIRS = [
+#     'ushop/static',
+# ]
 #
-STATIC_URL = 'static/'
-STATIC_ROOT = 'os.path.join()', 'static'
-STATICFILES_DIRS = [
-    'ushop/static',
-]
-
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_ADDRESSING_STYLE = 'virtual'
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '')
+# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+#
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# AWS_S3_ADDRESSING_STYLE = 'virtual'
+#
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # AWS S3 Static Files Configuration
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
@@ -214,24 +214,24 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = 'public-read'
+# AWS_DEFAULT_ACL = 'public-read'
+AWS_DEFAULT_ACL = None
 AWS_LOCATION = 'static'
 
 STATICFILES_DIRS = [
     'ushop/static',
 ]
-# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 DEFAULT_FILE_STORAGE = 'ushop.media_storages.MediaStorage'
 
 # media files configuration
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'os.path.join()', 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #
 from django.contrib.messages import constants as messages
-
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
