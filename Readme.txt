@@ -29,6 +29,9 @@ b''
 Unable to parse response (no element found: line 1, column 0), invalid XML received. Further retries may succeed:
 b''
 solutiuon-1 or anyone who may be stuck in this issue, the solution is to go to ~/%USERNAME%/.aws and delete the 'config' file there, then try running eb init again.
+SOLUTION:Go to C:\Users\YOUR_USERNAME\.aws and delete the 'config' file there, then try running eb init again.
+eb init -p python-3.8 django-ushop-app
+
 
 install ebwscli
 
@@ -51,9 +54,13 @@ Type 'yes' to continue, or 'no' to cancel: yes
 chpre@LAPTOP-SUK148A8 MINGW64 ~/OneDrive/Desktop/ushop (master)
 $
 
-
-
-
 deactivate venv before deploying using ebcli
 eb init -p python-3.9.13 django-ushop-app
 aws AWS_ACCESS_KEY_IDid and SECRET_KEY
+
+
+ISSUE- eb create django-ushop-env
+Starting environment deployment via CodeCommit
+ERROR: InvalidParameterValueError - "Error making request to CodeCommit: Could not retrieve 30b2a0e3701244c667ef0c3e01004863f7fb63d6 (Service: AWSCodeCommit; Status Code: 400; Error Code: CommitIdDoesNotExistException; Request ID: 6a435ff7-25a3-444b-90cb-3b1804ad51db; Proxy: null)"
+
+SOLUTION-
