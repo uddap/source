@@ -1,0 +1,19 @@
+{
+    "name": "intake",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "aws-sdk": "latest",
+        "body-parser": "latest",
+        "bootstrap": "^5.3.2",
+        "bootstrap-icons": "^1.11.3",
+        "ejs": "latest",
+        "express": "latest"
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "engines": {
+        "node": ">=10 <11"
+    }
+}
